@@ -16,7 +16,7 @@ pip install -r requirements.txt
 python -m src.main <file_type> <file_path>
 
 # Example
-python -m src.main csv ./data.csv
+python -m src.main csv examples/sample.csv
 ```
 
 ## Running Tests
@@ -66,6 +66,15 @@ Custom exception hierarchy with manual error codes:
 - **Strategy Pattern** - each file format is a separate processor class with a uniform `process()` interface, keeping format-specific logic isolated
 - **Factory Pattern** - `ProcessorFactory.get_processor(type)` returns the right strategy instance, so callers don't care about which class to instantiate
 - **Inheritance** - processors extend a `BaseProcessor` base that defines the common contract
+
+### Test Coverage
+
+21 tests across 2 files:
+
+| File | Tests | What It Covers |
+|---|---|---|
+| `tests/test_processors.py` | 11 | Each processor - valid input, empty content, malformed content, edge cases (header-only, empty array, empty root) |
+| `tests/test_factory.py` | 10 | Factory returns correct processor per type, case insensitivity, unknown types, integration via `process_file()` |
 
 ### Flow Diagram
 
