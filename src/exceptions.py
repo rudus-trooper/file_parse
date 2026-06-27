@@ -9,7 +9,7 @@ class FileProcessingError(Exception):
 
 
 class UnsupportedFileTypeError(FileProcessingError):
-    # Error code 1 — no matching processor found
+    # Error code 1 - no matching processor found
     _error_code = 1
 
     def __init__(self, file_type=""):
@@ -18,7 +18,7 @@ class UnsupportedFileTypeError(FileProcessingError):
 
 
 class MalformedContentError(FileProcessingError):
-    # Error code 2 — content doesn't match its declared format
+    # Error code 2 - content doesn't match its declared format
     _error_code = 2
 
     def __init__(self, file_type="", detail=""):
@@ -32,7 +32,7 @@ class MalformedContentError(FileProcessingError):
 
 
 class EmptyContentError(FileProcessingError):
-    # Error code 3 — nothing to parse
+    # Error code 3 - nothing to parse
     _error_code = 3
 
     def __init__(self):
