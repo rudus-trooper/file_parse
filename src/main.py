@@ -1,6 +1,7 @@
 import json
 import sys
 
+from src.exceptions import FileProcessingError
 from src.factory import ProcessorFactory
 
 
@@ -20,8 +21,12 @@ if __name__ == "__main__":
     file_type = sys.argv[1]
     file_path = sys.argv[2]
 
-    with open(file_path) as f:
-        file_content = f.read()
+    try:
+        with open(file_path) as f:
+            file_content = f.read()
 
-    result = process_file(file_type, file_content)
-    print(json.dumps(result))
+        result = process_file(file_type, file_content)
+        print(json.dumps(result))
+    except FileProcessingError as e:
+        print(e, file=sys.stderr)
+        sys.exit(1)
